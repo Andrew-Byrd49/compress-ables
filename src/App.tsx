@@ -18,7 +18,7 @@ function generateId() {
 
 function App() {
   const [files, setFiles] = useState<ProcessedFile[]>([]);
-  const [quality, setQuality] = useState(0.9);
+  const [quality, setQuality] = useState(1.0);
   const [format, setFormat] = useState<'webp' | 'avif'>('avif');
   const [maxWidth, setMaxWidth] = useState<number | undefined>(undefined);
   const [maxHeight, setMaxHeight] = useState<number | undefined>(undefined);
@@ -66,7 +66,7 @@ function App() {
     // is async. Let's try simple map first.
 
     const options: CompressionOptions = {
-      quality,
+      quality: quality * 0.9, // Visual 100% (1.0) maps to Actual 90% (0.9)
       format,
       maxWidth,
       maxHeight
